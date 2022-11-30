@@ -23,3 +23,41 @@ export interface ICollectionResponse<T> {
   data: T;
   meta: IResourceMeta;
 }
+
+export interface IArticleImage {
+  data : {
+    attributes : {
+      url : string;
+    }
+  }
+}
+
+export interface IAuthor {
+  data : {
+    attributes : {
+      username : string;
+      avatar : {
+        data : {
+          attributes : {
+            url : string;
+          }
+        }
+      }
+    }
+  }
+}
+export interface IArticleAtributes{
+  title : string;
+  slug : string;
+  body : string;
+  createdAt : string;
+  image : IArticleImage;
+  category : {
+    data : ICategory;
+  }
+  author : IAuthor;
+}
+export interface IArticle {
+  id : number;
+  attributes : IArticleAtributes;
+}

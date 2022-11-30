@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 const Footer = () => {
   return (
-    <footer className="fixed bottom-0 left-0 w-[100%] mb-4">
+    <footer className="fixed bottom-0 left-0 w-[100%] py-4 bg-white">
         <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center">
                 <Link href={'/'} >

@@ -1,16 +1,8 @@
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 const Navbar: NextPage = () => {
-  const router = useRouter();
-  const { category } = router.query;
-  const isActiveLink = (categories: string) =>
-    category === categories
-      ? " text-primary after:contents-[''] after:w-[100%] after:h-[4px] after:rounded-md after:bg-primary after:absolute after:bottom-[-10px] after:left-0 transition-all duration-100"
-      : "";
-
   return (
     <>
       <nav className="mt-4 flex items-center justify-between">
@@ -31,24 +23,8 @@ const Navbar: NextPage = () => {
           </button>
         </div>
       </nav>
-      <nav className="mt-8 flex items-center flex-col">
-        <ul className="flex items-center w-[100%] mb-2">
-          <li className="pl-4 list-none">
-            <div className="relative">
-              <Link href={"/categories/recent"}>
-                <span
-                  className={
-                    "cursor-pointer font-bold" + `${isActiveLink("recent")}`
-                  }
-                >
-                  Recent
-                </span>
-              </Link>
-            </div>
-          </li>
-        </ul>
-        <hr className="h-[2px] w-[100%] bg-gray-200 " />
-      </nav>
     </>
   );
 };
+
+export default Navbar;
