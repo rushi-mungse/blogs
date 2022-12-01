@@ -8,3 +8,14 @@ export const dateFormate = (date : string) : string => {
 
     return result;
 }
+
+
+export const handleTitle = (query : string):string => {
+    return formateTitle(query);
+}
+
+
+export const formateTitle = (title : string):string => {
+    const formatedTitle = title.split('-').join(' ');
+    return formatedTitle.slice(0,1).toUpperCase() + formatedTitle.slice(1);
+}

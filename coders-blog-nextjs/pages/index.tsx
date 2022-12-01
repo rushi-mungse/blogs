@@ -5,7 +5,7 @@ import { AxiosResponse } from "axios";
 import { GetServerSideProps, NextPage } from "next";
 import Tabs from "../components/Tabs";
 import qs from 'qs'
-import Articles from "../components/Articles";
+import ArticlesList from "../components/ArticlesList";
 
 interface IPropType {
   categories : {
@@ -25,7 +25,7 @@ const Home: NextPage<IPropType> = ({categories, articles}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Tabs categories = {categories.items}/>
-      <Articles articles={articles.items}/>
+      <ArticlesList articles={articles.items}/>
     </div>
   );
 };

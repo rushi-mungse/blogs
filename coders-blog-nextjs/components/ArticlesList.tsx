@@ -7,7 +7,7 @@ interface TPropsTypes {
     articles : IArticle[]
 }
 
-const Articles = ({articles} : TPropsTypes) => {
+const ArticlesList = ({articles} : TPropsTypes) => {
   return (
     <div className="contianer mx-auto grid grid-cols-1 md:grid-cols-2 mt-8 gap-20">
         {
@@ -36,4 +36,4 @@ const Articles = ({articles} : TPropsTypes) => {
   )
 }
 
-export default Articles
+export default ArticlesList
