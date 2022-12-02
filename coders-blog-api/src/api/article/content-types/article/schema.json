@@ -45,6 +45,10 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "articles"
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
     }
   }
 }

@@ -1,3 +1,5 @@
+
+import {MDXRemoteSerializeResult} from 'next-mdx-remote'
 export interface ICategory {
   id: number;
   attributes: ICategoryAttribute;
@@ -49,7 +51,8 @@ export interface IAuthor {
 export interface IArticleAtributes{
   title : string;
   slug : string;
-  body : string;
+  body : string | MDXRemoteSerializeResult;
+  description : string;
   createdAt : string;
   image : IArticleImage;
   category : {

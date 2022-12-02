@@ -25,7 +25,7 @@ const ArticlesList = ({articles} : TPropsTypes) => {
                                 <span className="text-gray-400 ml-2 text-sm">{dateFormate(article.attributes.createdAt)}</span>
                             </div>
                         </div >
-                        <p className="mt-4">{article.attributes.body.slice(0, 250)} {article.attributes.body.length > 250 ? "..." : ""}</p>
+                        <p className="mt-4">{article.attributes.description.slice(0, 250)} {article.attributes.description.length > 250 ? "..." : ""}</p>
                     </div>
                 </div>
                 );
