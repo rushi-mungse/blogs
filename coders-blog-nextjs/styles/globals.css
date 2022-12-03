@@ -31,5 +31,29 @@ html{
     .single-article blockquote {
         @apply my-4 p-4 border-l-4 bg-gray-100 text-gray-500 border-primary;
     }
+    .single-article ol {
+        @apply list-decimal;
+    }
+
+    .single-article ul {
+        @apply list-decimal p-4;
+    }
+    .single-article p {
+        @apply my-4;
+    }
+    .single-article pre {
+        @apply text-black text-sm bg-gray-200;
+    }
+
+    .single-article a {
+        @apply text-blue-500 underline;
+    }
+    .single-article code {
+        @apply bg-gray-200 rounded-md px-1;
+    }
+
+    .single-article summary {
+        @apply cursor-pointer;
+    }
 
 }

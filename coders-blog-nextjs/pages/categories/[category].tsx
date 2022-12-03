@@ -7,8 +7,13 @@ import ArticlesList from "../../components/ArticlesList"
 import { useRouter } from "next/router"
 import qs from 'qs';
 import Head from 'next/head';
-import { handleTitle } from '../../utils';
+import { handleTitle, debounce } from '../../utils';
 
+interface IOptions {
+  populate : string[];
+  sort : string[];
+  filters : any;
+}
 interface IPropsType {
   categories : {
     items : ICategory[]
@@ -22,6 +27,10 @@ const category = ({categories, articles} : IPropsType) => {
   const router = useRouter();
   const {category : categorySlug} = router.query;
 
+  const handleOnSearch = (query : string ) : void => {
+    router.push(`/categories/${categorySlug}/?search=${query}`);
+  }
+
   return (
     <>
         <Head>
@@ -31,7 +40,7 @@ const category = ({categories, articles} : IPropsType) => {
        </Head>
 
         <div>
-          <Tabs  categories={categories.items}/>
+          <Tabs  categories={categories.items} handleSearch = {debounce(handleOnSearch, 500)}/>
           <ArticlesList articles={articles.items}/>
         </div>
     </>
@@ -42,7 +51,7 @@ const category = ({categories, articles} : IPropsType) => {
 export default category
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const options = {
+  const options : Partial<IOptions> = {
     populate : ['image','author.avatar'],
     sort : ['id:desc'],
     filters: {
@@ -50,6 +59,17 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
           slug: query.category,
       },
     },
+  }
+
+  if (query.search) {
+    options.filters = {
+      category: {
+        slug: query.category,
+      },
+      title: {
+          $containsi: query.search,
+      },
+    };
   }
 
   const queryString  = qs.stringify(options);

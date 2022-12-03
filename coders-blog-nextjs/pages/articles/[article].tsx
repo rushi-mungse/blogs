@@ -32,25 +32,19 @@ const article = ({article } : IPropsTypes) => {
         </Head>
         <hr className="mt-8"/>
         <button className="mt-6 cursor-pointer text-primary-light hover:text-primary duration-75 transition-all font-bold rounded-md" onClick={() => backButton()}>Back</button>
-        <div className="mt-4 grid grid-cols-3 single-article">
-            <div className="col-span-2">
-                <h1 className="text-3xl font-bold py-2"> {article.items.attributes.title} </h1>
-                <div className="flex items-center my-4">
-                    <div className="mt-2 flex items-center">
-                        <Image src = {`${process.env.API_BASE_URL}${article.items.attributes.author.data.attributes.avatar.data.attributes.url}`} height= {40} width= {40} className="rounded-md"/>
-                        <div className="ml-2">
-                            <span className="font-bold"> {article.items.attributes.author.data.attributes.username}</span> on
-                            <span className="text-gray-400 ml-2 text-sm">{dateFormate(article.items.attributes.createdAt)}</span>
-                        </div>
-                    </div >
-                </div>
-                <img src = {`${process.env.API_BASE_URL}${article.items.attributes.image.data.attributes.url}`} />
-                <div className="mt-4">
-                    <MDXRemote {...(article.items.attributes.body as MDXRemoteSerializeResult)} />
-                </div>
+        <div className="mt-4 single-article w-[75%] mx-auto">
+            <h1 className="text-3xl font-bold py-2"> {article.items.attributes.title} </h1>
+            <div className="flex items-center my-4">
+                <div className="mt-2 flex items-center">
+                    <Image src = {`${process.env.API_BASE_URL}${article.items.attributes.author.data.attributes.avatar.data.attributes.url}`} height= {40} width= {40} className="rounded-md"/>
+                    <div className="ml-2">
+                        <span className="font-bold"> {article.items.attributes.author.data.attributes.username}</span> on
+                        <span className="text-gray-400 ml-2 text-sm">{dateFormate(article.items.attributes.createdAt)}</span>
+                    </div>
+                </div >
             </div>
-            <div>
-                <h1>Form</h1>
+            <div className="mt-4">
+                <MDXRemote {...(article.items.attributes.body as MDXRemoteSerializeResult)} />
             </div>
         </div>
     </div>

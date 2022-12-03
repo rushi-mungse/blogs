@@ -4,14 +4,16 @@ import { ICategory } from "../types"
 import Image from 'next/image'
 
 interface IPropsTypes {
-    categories : ICategory[]
+    categories : ICategory[];
+    handleSearch : (e : string) => void;
 }
 
-const Tabs = ({categories} : IPropsTypes) => {
+const Tabs = ({categories, handleSearch} : IPropsTypes) => {
     const router = useRouter();
     const isActiveLink = (category : ICategory) : boolean => {
         return router.query.category === category.attributes.slug;
     }
+
     return (
         <div className="flex items-center justify-between my-4 border-b-2 border-b-gray-200">
             <ul className="flex items-center">
@@ -24,7 +26,7 @@ const Tabs = ({categories} : IPropsTypes) => {
             </ul>
             <div className="flex items-center justify-center">
                 <Image src = "/search.png" height={20} width={20} />
-                <input type="text" placeholder="search blogs" className="ml-2 outline-none w-[100px]"/>
+                <input type="text" onChange = {(e) => handleSearch(e.target.value)} placeholder="search blogs" className="ml-2 outline-none w-[100px]"/>
             </div>
         </div>
   )
